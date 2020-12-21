@@ -20,17 +20,11 @@ def get_jobs(pp_path):
 		
 		automated, collectionProtocol, comments, createdBy, groupNames, inputCount, instrumentName, jobId, jobStatus, \
 		name, plateId, primaryProtocol, protocolName ,referenceSequenceName, sampleName, sequencingCondition, version, \
-		whenStarted = line.split('","')
-
-		#if name in ['Copy_of_ER_15402_3A_HGAP3','Copy_of_ER_15365_3A_HGAP3','Copy_of_ER_15405_3A_HGAP3']:
-		#	to_submit.add((jobId, name[8:]))			
+		whenStarted = line.split('","')				
 
 		if jobStatus == 'Completed' and not pattern.match(name) is None and not jobId in jobs_run and protocolName=='RS_HGAP_Assembly.3':
 			
-			to_submit.add((jobId, name))
-
-		#if name=='ER_20265_3A_HGAP3': 		
-		#	to_submit.add((jobId, name))	
+			to_submit.add((jobId, name))			
 			
 	path = os.path.expanduser('~') + '/.my.cnf'
 	with open(path) as cnf_file:
