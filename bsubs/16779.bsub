@@ -1,0 +1,13 @@
+#!/bin/bash
+#BSUB -J 016779
+#BSUB -P acc_InfectiousDisease
+#BSUB -q private
+#BSUB -n 12
+#BSUB -R span[hosts=1]
+#BSUB -R rusage[mem=4000]
+#BSUB -W 23:00
+#BSUB -o %J.stdout
+#BSUB -eo %J.stderr
+#BSUB -L /bin/bash
+cd /sc/hydra/work/kumara22/pathogendb-pipeline
+./post-assemble-pathogen  OUT=/sc/arion/projects/InfectiousDisease/post-assembly-output/ER27195_3A_016779 SMRT_JOB_ID=016779 STRAIN_NAME=ER27195_3A SPECIES=S_aureus LSF_DISABLED=1 CLUSTER=BASH SEQ_PLATFORM=RS2 igb_to_pathogendb

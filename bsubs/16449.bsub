@@ -1,0 +1,13 @@
+#!/bin/bash
+#BSUB -J 016449
+#BSUB -P acc_InfectiousDisease
+#BSUB -q express
+#BSUB -n 1
+#BSUB -R span[hosts=1]
+#BSUB -R rusage[mem=4000]
+#BSUB -W 1:00
+#BSUB -o %J.stdout
+#BSUB -eo %J.stderr
+#BSUB -L /bin/bash
+cd /sc/hydra/work/kumara22/pathogendb-pipeline
+./post-assemble-pathogen  OUT=/sc/orga/projects/InfectiousDisease/post-assembly-output/ER17768_3A_016449 SMRT_JOB_ID=016449 STRAIN_NAME=ER17768_3A SPECIES=S_marcescens LSF_DISABLED=1 CLUSTER=BASH igb_to_pathogendb

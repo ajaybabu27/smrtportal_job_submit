@@ -1,0 +1,13 @@
+#!/bin/bash
+#BSUB -J 016793
+#BSUB -P acc_InfectiousDisease
+#BSUB -q private
+#BSUB -n 12
+#BSUB -R span[hosts=1]
+#BSUB -R rusage[mem=4000]
+#BSUB -W 23:00
+#BSUB -o %J.stdout
+#BSUB -eo %J.stderr
+#BSUB -L /bin/bash
+cd /sc/arion/work/kumara22/pathogendb-pipeline
+./post-assemble-pathogen  OUT=/sc/arion/projects/InfectiousDisease/post-assembly-output/ER28223_3A_016793 SMRT_JOB_ID=016793 STRAIN_NAME=ER28223_3A SPECIES=S_aureus LSF_DISABLED=1 CLUSTER=BASH SEQ_PLATFORM=RS2 igb_to_pathogendb
